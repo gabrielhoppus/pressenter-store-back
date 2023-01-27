@@ -1,7 +1,6 @@
 export function validateSchema(schema) {
     return (req, res, next) => {
-        const {name, email, password, confirmPassword}  = req.body
-        const validation = schema.validate(req.body,{abroutEarly:false})
+        const validation = schema.validate(req.body,{abortEarly:false})
 
         if (validation.error) {
             const errorMsg = validation.error.details.map(err => err.message)

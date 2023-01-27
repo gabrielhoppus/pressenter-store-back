@@ -7,7 +7,7 @@ export const userSchema = Joi.object({
     confirmPassword: Joi.string().valid(Joi.ref('password')).required()
 })
 
-// export const loginSchema = Joi.object({
-//     email: Joi.string().email({ tlds: { allow: false } }),
-//     password: Joi.string().required(),
-// })
+export const loginSchema = Joi.object({
+    email: Joi.string().email({ tlds: { allow: false } }),
+    password: Joi.string().required(),
+})
