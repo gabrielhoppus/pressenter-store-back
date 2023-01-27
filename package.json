@@ -15,8 +15,7 @@
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
-  "type":"module",
-  "devDependencies": {},
+  "type": "module",
   "scripts": {
     "start": "nodemon src/server.js"
   },
@@ -30,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/gabrielhoppus/pressenter-store-back/issues"
   },
-  "homepage": "https://github.com/gabrielhoppus/pressenter-store-back#readme"
+  "homepage": "https://github.com/gabrielhoppus/pressenter-store-back#readme",
+  "devDependencies": {}
 }
