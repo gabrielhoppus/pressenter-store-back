@@ -1,7 +1,7 @@
 import db from "../config/database.js";
 
 export async function showProduct(req, res) {
-  const product = req.params.id;
+  const {product} = req.params;
   const infoProduct = await db
     .collection("products")
     .findOne({ product: product });
@@ -46,8 +46,4 @@ export async function deleteProduct(req, res){
   } catch (error) {
     res.status(500).send(error.message);
   }
-}
-
-export async function editProduct(req, res){
-
 }

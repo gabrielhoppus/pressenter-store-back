@@ -13,6 +13,6 @@ categoriesRouter.get("/categories", getCategories);
 categoriesRouter.get("/category/:id?", showCategoryPage);
 categoriesRouter.post("/admin-category", addCategory);
 categoriesRouter.delete("/admin-category/:name", deleteCategory);
-categoriesRouter.put("/admin-category", editCategory);
+categoriesRouter.put("/admin-category/:name/:newName", editCategory);
 
 export default categoriesRouter;
