@@ -43,3 +43,19 @@ export async function signIn(req, res) {
 
     }
 }
+
+export async function logOut(req, res) {
+    const { authorization } = req.headers;
+    const token = authorization?.replace('Bearer ', '');
+
+    if (!token) return res.status(401).send("Não autorizado");
+
+    const session = await db.collection("sessions").findOne({ token });
+
+    if (session) {
+        await db.collection("sessions").deleteOne({ token });
+        res.status(201).send("Deletado com sucesso!");
+    } else {
+        return res.status(404).send("Sessão não encontrada");
+    }
+}
