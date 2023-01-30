@@ -14,7 +14,7 @@ export async function showCategoryPage(req, res) {
     .toArray();
   res.send(categoryProducts);
 }
-
+ 
 export async function addCategory(req, res) {
   const { name } = req.body;
 
@@ -33,14 +33,24 @@ export async function addCategory(req, res) {
   }
 }
 
-export async function editCategory(req, res) {}
+export async function editCategory(req, res) {
+  const { name, newName } = req.params;
+
+  try {
+    await db
+      .collection("categories")
+      .updateOne({ name }, { $set: { name: newName } });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
 
 export async function deleteCategory(req, res) {
   const { name } = req.params;
 
   try {
     await db.collection("categories").deleteOne({ name });
-    res.status(202)
+    res.status(202);
   } catch (error) {
     res.status(500).send(error.message);
   }
