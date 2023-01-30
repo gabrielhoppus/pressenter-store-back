@@ -11,8 +11,7 @@ export async function showProduct(req, res) {
 export async function showAllProducts(req, res) {
   try {
     const findProducts = await db.collection("products").find({}).toArray();
-    const allProducts = findProducts.map((p) => p.product);
-    res.send(allProducts.sort());
+    res.send(findProducts);
   } catch (error) {
     res.status(500).send(error.message);
   } 
