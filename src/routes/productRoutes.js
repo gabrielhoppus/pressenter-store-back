@@ -3,8 +3,7 @@ import {
   showProduct,
   addProduct,
   showAllProducts,
-  deleteProduct,
-  editProduct,
+  deleteProduct
 } from "../controller/productController.js";
 
 
