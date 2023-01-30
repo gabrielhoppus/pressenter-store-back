@@ -20,13 +20,19 @@ export async function getCart(res) {
 }
 
 export async function addItem(req, res) {
-    const userSession = res.locals.session;
-    const userCart = res.locals.cart
+    const userSession = res.locals.session
+    const { email, password } = req.body;
+    let userCart = await db.collection("carts").findOne({ _id: userSession.id }).toArray();
     const product = req.body
 
-    userCart.cart.push(product);
-    await db.collection("carts").updateOne({ _id: userSession.id }, { $set: userCart });
-    return res.status(200).send(userCart);
+    if (userCart){
+        userCart.cart.push(product);
+        await db.collection("carts").updateOne({ $set: userCart });
+        return res.status(200).send(userCart);
+    }else{
+        await db.collection("carts").insertOne({ email, password });
+        return res.status(200).send(userCart);
+    }
 }
 
 export async function deleteItem(req, res) {
