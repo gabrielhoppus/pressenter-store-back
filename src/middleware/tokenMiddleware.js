@@ -4,7 +4,7 @@ export async function validateToken (req, res, next){
     const { authorization } = req.headers;
     const token = authorization?.replace('Bearer ', '');
 
-    const session = await db.collection("sessions").findOne({ token });
+    const session = await db.collection("session").findOne({ token });
 
     if (!token || !session) 
         return res.status(401).send("Credenciais de autenticação inválidas");
